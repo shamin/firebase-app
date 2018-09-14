@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import firebase, { provider } from '../firebase'
+import firebase, { provider, database } from '../firebase'
 
 class App extends Component {
   login() {
@@ -18,12 +18,26 @@ class App extends Component {
     });
   }
 
+  write() {
+    const user = firebase.auth().currentUser
+    if (user) {
+      database.ref('users/' + user.uid).set({
+        test: user.email,
+      })
+    } else {
+      database.ref('users/123').set({
+        test: "as",
+      })
+    }
+  }
+
   render() {
     console.log(firebase)
     return (
       <div>
         <button type="button" onClick={this.login}>Sigin</button>
         <button type="button" onClick={this.signOut}>SigOut</button>
+        <button type="button" onClick={this.write}>Write test</button>
       </div>
     )
   }
