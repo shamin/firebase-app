@@ -17,6 +17,7 @@ module.exports = {
     ],
     "rules": {
         "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+        "react/prefer-stateless-function": [0],
         "arrow-parens": 0,
         "comma-dangle": ["error", "never"],
         "indent": ["error", 4],
