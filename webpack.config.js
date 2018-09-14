@@ -9,9 +9,8 @@ module.exports = (env, options) => {
   const envs = dotenv.config().parsed
 
   const envKeys = Object.keys(envs).reduce((prev, next) => {
-    const data = {}
-    data[`process.env.${next}`] = JSON.stringify(envs[next])
-    return data
+    prev[`process.env.${next}`] = JSON.stringify(envs[next])
+    return prev
   }, {})
 
   return ({
