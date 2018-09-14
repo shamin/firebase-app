@@ -10,10 +10,21 @@ class App extends Component {
     })
   }
 
+  signOut() {
+    firebase.auth().signOut().then(() => {
+      console.log('Signout success')
+    }).catch((error) => {
+      console.log('Signout failure', error)
+    });
+  }
+
   render() {
     console.log(firebase)
     return (
-      <div><button type="button" onClick={this.login}>Sigin</button></div>
+      <div>
+        <button type="button" onClick={this.login}>Sigin</button>
+        <button type="button" onClick={this.signOut}>SigOut</button>
+      </div>
     )
   }
 }
